@@ -24,7 +24,7 @@ To achieve this effect:
 You need to use the following code:
 
 ```javascript
-var ld = new Loader(), stage = new Stage("#ourCanvas", localStorage.webgl == "1"), bmp;
+var ld = new Loader(), stage = new Stage("#ourCanvas"), bmp;
 ld.loadRes([
     { id: "atLogo", src: "../asset/img/atLogo.png" }
 ]);
