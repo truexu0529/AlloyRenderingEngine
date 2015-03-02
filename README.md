@@ -14,6 +14,7 @@
 * [sprite](http://alloyteam.github.io/AlloyRenderingEngine/showcase/sprite.html) 
 * [transform](http://alloyteam.github.io/AlloyRenderingEngine/showcase/transform.html) 
 * [txt](http://alloyteam.github.io/AlloyRenderingEngine/showcase/txt.html) 
+* [box2d](http://alloyteam.github.io/AlloyRenderingEngine/showcase/box2d.html) 
 
 # Tutorials
 * [lesson1](http://www.cnblogs.com/iamzhanglei/p/4306146.html)
