@@ -34,10 +34,10 @@ bmp = new Bitmap("img/atLogo.png");
 bmp.originX = 0.5;
 bmp.originY = 0.5;
 //bind click event, the event monitor can be accurate to pixel
-bmp.on("click", function () {
+bmp.onClick(function () {
     //apply a random filter to the bmp
     bmp.setFilter(Math.random(), Math.random(), Math.random(), 1);
-})
+});
 //add object to stage
 stage.add(bmp);
 
@@ -50,7 +50,7 @@ stage.onTick(function () {
     }
     bmp.scaleX += step;
     bmp.scaleY += step;
-})
+});
 ```
 
 # Contact
