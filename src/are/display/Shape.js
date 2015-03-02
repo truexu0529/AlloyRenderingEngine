@@ -31,6 +31,15 @@ define("ARE.Shape:ARE.DisplayObject", {
             }
         }
     },
+    strokeRect: function () {
+        this.cmds.push(["strokeRect", arguments]);
+        return this;
+    },
+    fillRect: function () {
+
+        this.cmds.push(["fillRect", arguments]);
+        return this;
+    },
     beginPath: function () {
 
         this.cmds.push(["beginPath", arguments]);

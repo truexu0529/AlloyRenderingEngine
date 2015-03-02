@@ -7,7 +7,7 @@
 define("ARE.DisplayObject", {
     ctor: function () {
         this.alpha=this.scaleX = this.scaleY = 1;
-        this.x = this.y = this.rotation = this.originX = this.originY = this.skewX = this.skewY = 0;
+        this.x = this.y = this.rotation = this.originX = this.originY = this.skewX = this.skewY =this.width=this.height= 0;
         this.visible = true;
         this._matrix = new Matrix2D();
         this.events = {};
@@ -140,5 +140,8 @@ define("ARE.DisplayObject", {
         this.originY = 0.5;
         this.x = this.parent.width / 2;
         this.y = this.parent.height / 2;;
+    },
+    onClick: function (fn) {
+        this.on("click", fn);
     }
 })
