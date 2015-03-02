@@ -80,7 +80,7 @@ define("Main", ["ARE"], {
             fixtureDef.shape = polygonShape;
             var body = world.CreateBody(bodyDef);
             bodies.push(body);
-            body.bitmap = new Bitmap("/are/asset/img/box.jpg");
+            body.bitmap = new Bitmap("../asset/img/box.jpg");
             body.bitmap.originX = body.bitmap.originY = 0.5;
             body.bitmap.scaleX = width / 200;
             body.bitmap.scaleY = height / 200;
