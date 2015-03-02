@@ -69,7 +69,7 @@ define("Main", ["ARE"], {
                 }
             }
         }
-
+        toggleCache(true);
         window.toggleCache = toggleCache;
 
 

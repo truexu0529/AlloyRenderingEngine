@@ -31,9 +31,10 @@ define("Main", ["ARE"], {
             bmp.originY = 0.5;
             bmp.x = 240;
             bmp.y = 240;
-            //bind click event
+            //bind click event, the event monitor can be accurate to pixel
             bmp.on("click", function () {
-                alert("The event monitor can be accurate to pixel");
+                //apply a random filter to the bmp
+                bmp.setFilter(Math.random(), Math.random(), Math.random(), 1);
             })
             //add object to stage
             stage.add(bmp);

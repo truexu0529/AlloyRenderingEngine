@@ -303,31 +303,36 @@
             //this._drawToCache(ctx, o);
             //document.body.appendChild(mmyCanvas)
             samplerID = this._initCache(o, mmyCanvas, ctx);
-            mat4.translate(matrix,	[o.x - o.originX, o.y - o.originY, 0],	mvMatrix);
-            mat4.scale(mvMatrix, [o.scaleX * mmyCanvas.width, o.scaleY * mmyCanvas.height, 1]);
+            mat4.translate(matrix,	[o.x , o.y , 0],	mvMatrix);
+           
             mat4.rotateX(mvMatrix,	o.skewX * degToRad);
             mat4.rotateY(mvMatrix,	o.skewY * degToRad);
             mat4.rotateZ(mvMatrix, o.rotation * degToRad);
+            mat4.scale(mvMatrix, [o.scaleX * mmyCanvas.width, o.scaleY * mmyCanvas.height, 1]);
+            mat4.translate(mvMatrix, [-o.originX, -o.originY, 0]);
         } else if (o instanceof Bitmap) {
             // Bitmap is simply the image.
             img = o.img;
             samplerID = this._initTexture(img, ctx);
             mat4.translate(matrix,	[o.x, o.y , 0],	mvMatrix);
-            mat4.scale(mvMatrix,	[o.scaleX * img.width, o.scaleY * img.height, 1]);
+           
             mat4.rotateX(mvMatrix,	o.skewX * degToRad);
             mat4.rotateY(mvMatrix,	o.skewY * degToRad);
             mat4.rotateZ(mvMatrix, o.rotation * degToRad);
-
+            //先rotate再scale可防止scaleX不等于scaleY时，出现skew
+            mat4.scale(mvMatrix, [o.scaleX * img.width, o.scaleY * img.height, 1]);
             //待优化
             mat4.translate(mvMatrix, [-o.originX , -o.originY, 0]);
 
         } else if (o instanceof Container) {
             var list = o.children.slice(0);
-            mat4.translate(matrix,	[o.x - o.originX, o.y - o.originY, 0], 	mvMatrix);
-            mat4.scale(mvMatrix,	[o.scaleX, o.scaleY, 1]);
+            mat4.translate(matrix,	[o.x, o.y , 0], 	mvMatrix);
+            
             mat4.rotateX(mvMatrix,	o.skewX * degToRad);
             mat4.rotateY(mvMatrix,	o.skewY * degToRad);
-            mat4.rotateZ(mvMatrix,	o.rotation * degToRad);
+            mat4.rotateZ(mvMatrix, o.rotation * degToRad);
+            mat4.scale(mvMatrix, [o.scaleX, o.scaleY, 1]);
+            mat4.translate(mvMatrix, [-o.originX, -o.originY, 0]);
             for (var i=0,l=list.length; i<l; i++) {
                 this._render(ctx,list[i],mvMatrix);
             }
@@ -346,12 +351,13 @@
             uFrame = (rect[0] / img.width);
             vFrame = (rect[1] / img.height);
 
-            mat4.translate(matrix, [o.x - o.originX, o.y - o.originY, 0], mvMatrix);
-            mat4.scale(mvMatrix, [o.scaleX * rect[2], o.scaleY * rect[3], 1]);
+            mat4.translate(matrix, [o.x , o.y , 0], mvMatrix);
+           
             mat4.rotateX(mvMatrix, o.skewX * degToRad);
             mat4.rotateY(mvMatrix, o.skewY * degToRad);
             mat4.rotateZ(mvMatrix, o.rotation * degToRad);
-           
+            mat4.scale(mvMatrix, [o.scaleX * rect[2], o.scaleY * rect[3], 1]);
+            mat4.translate(mvMatrix, [-o.originX, -o.originY, 0]);
         }
 
         //else if (o instanceof Shape) {

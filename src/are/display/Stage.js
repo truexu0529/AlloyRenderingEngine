@@ -70,8 +70,15 @@ define("ARE.Stage:ARE.Container", {
     },
     _handleClick: function (evt) {
        // var child = this._getHitChild(this.hitCtx, evt.pageX - this.offset[0], evt.pageY - this.offset[1], "click");
-
-      
+        evt.stageX = evt.pageX - this.offset[0];
+        evt.stageY = evt.pageY - this.offset[1];
+        var callbacks = this.events["click"];
+        if (callbacks) {
+            for (var i = 0, len = callbacks.length; i < len; i++) {
+                var callback = callbacks[i];
+                callback(evt);
+            }
+        }
         var child = this.hitRenderer.hitRender(this.hitCtx, this, null, evt.pageX - this.offset[0], evt.pageY - this.offset[1], "click");
         // if (child) child.execEvent("click");
     },

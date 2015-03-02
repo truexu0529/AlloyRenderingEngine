@@ -285,7 +285,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src\\are\\display\\Txt.js",
-            "line": 3,
+            "line": 4,
             "description": "文本对象",
             "is_constructor": 1
         },
@@ -371,7 +371,7 @@
     "classitems": [
         {
             "file": "src\\are\\display\\Bitmap.js",
-            "line": 15,
+            "line": 30,
             "description": "设置滤镜",
             "itemtype": "method",
             "name": "setFilter",
@@ -460,7 +460,7 @@
         {
             "file": "src\\are\\display\\DisplayObject.js",
             "line": 47,
-            "description": "To subscribe to multiple events at once, pass an object as the first\nargument, where the key:value pairs correspond to the eventName:callback.\n\n     this.on({\n         \"attrChange\" : this._onAttrChange,\n         \"change\"     : this._onChange\n     });\n\nYou can also pass an array of event names as the first argument to\nsubscribe to all listed events with the same callback.\n\n     this.on([ \"change\", \"attrChange\" ], this._onChange);\n\nReturning `false` from a callback is supported as an alternative to\ncalling `e.preventDefault(); e.stopPropagation();`.  However, it is\nrecommended to use the event methods whenever possible.\n\n绑定事件",
+            "description": "绑定事件",
             "itemtype": "method",
             "name": "on",
             "params": [
@@ -479,7 +479,7 @@
         },
         {
             "file": "src\\are\\display\\DisplayObject.js",
-            "line": 91,
+            "line": 74,
             "description": "克隆",
             "itemtype": "method",
             "name": "clone",
@@ -487,7 +487,7 @@
         },
         {
             "file": "src\\are\\display\\DisplayObject.js",
-            "line": 115,
+            "line": 98,
             "description": "缓存",
             "itemtype": "method",
             "name": "cache",
@@ -495,7 +495,7 @@
         },
         {
             "file": "src\\are\\display\\DisplayObject.js",
-            "line": 135,
+            "line": 118,
             "description": "清除缓存",
             "itemtype": "method",
             "name": "uncache",
@@ -503,10 +503,18 @@
         },
         {
             "file": "src\\are\\display\\DisplayObject.js",
-            "line": 142,
+            "line": 127,
             "description": "获取包围盒",
             "itemtype": "method",
             "name": "getBound",
+            "class": "DisplayObject"
+        },
+        {
+            "file": "src\\are\\display\\DisplayObject.js",
+            "line": 134,
+            "description": "定位至父容器中心",
+            "itemtype": "method",
+            "name": "toCenter",
             "class": "DisplayObject"
         },
         {
@@ -519,7 +527,7 @@
         },
         {
             "file": "src\\are\\display\\Shape.js",
-            "line": 44,
+            "line": 53,
             "description": "关闭路径",
             "itemtype": "method",
             "name": "",
@@ -586,7 +594,7 @@
         },
         {
             "file": "src\\are\\display\\Stage.js",
-            "line": 161,
+            "line": 168,
             "description": "注册循环时要执行的函数",
             "itemtype": "method",
             "name": "update",

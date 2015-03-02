@@ -20,17 +20,17 @@
 
 define("Main", ["ARE"], {
     ctor: function () {
-        var ld = new Loader(), stage = new Stage("#ourCanvas", localStorage.webgl == "1");
-        ld.loadRes([
-            { id: "atLogo", src: "../asset/img/atLogo.png" }
-        ]);
-        ld.complete(function () {
-            var bmp = new Bitmap(ld.get("atLogo"));
-            bmp.on("click", function () {
-                alert("The event monitor can be accurate to pixel");
-            })
-            stage.add(bmp);
-            bmp.toCenter();
-        });
+        var stage = new Stage("#ourCanvas", localStorage.webgl == "1");
+
+        var bmp = new Bitmap("../asset/img/atLogo.png");
+        bmp.originX = 0.5;
+        bmp.originY = 0.5;
+        bmp.x = stage.width / 2;
+        bmp.y = stage.height / 2;
+        bmp.on("click", function () {
+            alert("The event monitor can be accurate to pixel");
+        })
+        stage.add(bmp);
+
     }
 })
