@@ -27,12 +27,10 @@ You need to use the following code:
 
 ```javascript
 var bmp, stage = new Stage("#ourCanvas");
-bmp = new Bitmap("../asset/img/atLogo.png");
+bmp = new Bitmap("img/atLogo.png");
 //（0.5,0.5）==〉The center is the point of rotation
 bmp.originX = 0.5;
 bmp.originY = 0.5;
-bmp.x = 240;
-bmp.y = 240;
 //bind click event, the event monitor can be accurate to pixel
 bmp.on("click", function () {
     //apply a random filter to the bmp
