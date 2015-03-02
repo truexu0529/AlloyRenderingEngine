@@ -54,5 +54,6 @@ stage.onTick(function () {
 ```
 
 # Concat
-If you’re interested in pixi.js then feel free to follow me on twitter ([@iamzhanglei](https://twitter.com/iamzhanglei)) and I will keep you posted
+If you’re interested in pixi.js then feel free to follow me on twitter ([@iamzhanglei](https://twitter.com/iamzhanglei)) and I will keep you posted.
+
 This content is released under the (http://opensource.org/licenses/MIT) MIT License.
