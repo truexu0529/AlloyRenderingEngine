@@ -10,6 +10,7 @@
 * [filter](http://alloyteam.github.io/AlloyRenderingEngine/showcase/filter.html) 
 * [particle](http://alloyteam.github.io/AlloyRenderingEngine/showcase/particle.html) 
 * [particlesystem](http://alloyteam.github.io/AlloyRenderingEngine/showcase/particlesystem.html) 
+* [particleeditor](http://alloyteam.github.io/ParticleEditor/)
 * [shape](http://alloyteam.github.io/AlloyRenderingEngine/showcase/shape.html) 
 * [sprite](http://alloyteam.github.io/AlloyRenderingEngine/showcase/sprite.html) 
 * [transform](http://alloyteam.github.io/AlloyRenderingEngine/showcase/transform.html) 
