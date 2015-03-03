@@ -20,7 +20,7 @@
 
 define("Main", ["ARE"], {
     ctor: function () {
-        var ld = new Loader(), pgBmp;
+        var ld = new Loader();
         var stage = new Stage("#ourCanvas", true);
 
         var shape = new Shape();
