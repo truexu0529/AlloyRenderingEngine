@@ -1,9 +1,11 @@
 ﻿define("ARE.CanvasRenderer", {
     ctor: function (stage) {
-        this.stage = stage;
-        this.ctx = stage.ctx;
-        this.height = stage.width;
-        this.width = stage.height;
+        if (stage) {
+            this.stage = stage;
+            this.ctx = stage.ctx;
+            this.height = stage.width;
+            this.width = stage.height;
+        }
     },
     update: function () {
         
@@ -35,6 +37,7 @@
         } else if (o instanceof Container || o instanceof Stage) {
             var list = o.children.slice(0);
             for (var i = 0, l = list.length; i < l; i++) {
+                //if containter has a containter (save-->restore-->save-->restore)will store a parents's mtx tree
                 ctx.save();
                 this.render(ctx, list[i], mtx);
                 ctx.restore();
@@ -150,7 +153,7 @@
             var list = o.children.slice(0);
             for (var i = 0, l = list.length; i < l; i++) {
                 ctx.save();
-                this.renderCache(ctx, list[i]);
+                this.render(ctx, list[i]);
                 ctx.restore();
             }
         } else if (o instanceof Sprite) {

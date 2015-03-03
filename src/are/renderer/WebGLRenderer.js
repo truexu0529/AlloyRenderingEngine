@@ -8,6 +8,8 @@
 
         // public properties:
         this.snapToPixel = true;
+
+        this.canvasRenderer = new CanvasRenderer();
     },
     getSurface : function(width, height) {
         if (this.surface == null) {
@@ -273,11 +275,12 @@
 		
         this._cleanCache();
     },
+    _getCompositeOperation: function (o) {
+
+        if (o.compositeOperation) return o.compositeOperation;
+        if (o.parent) return this._getCompositeOperation(o.parent);
+    },
     _render: function (ctx, o, matrix, docFrag) {
-        if (o.compositeOperation === "lighter") {
-            ctx.blendFunc(ctx.SRC_ALPHA, ctx.ONE);
-            // return;
-        }
         var mat4 = GLMatrix.mat4;
         if (!o.isVisible()) { return; }
 				
@@ -297,6 +300,15 @@
 		 */
         var samplerID = 0;
 		
+        //https://www.opengl.org/sdk/docs/man/html/glBlendFunc.xhtml
+        var compositeOperation = this._getCompositeOperation(o);
+        if (compositeOperation=== "lighter") {
+            ctx.blendFunc(ctx.SRC_ALPHA, ctx.ONE);
+            // return;
+        } else {
+            ctx.blendFunc(ctx.SRC_ALPHA, ctx.ONE_MINUS_SRC_ALPHA);
+        }
+
         var mmyCanvas = o.cacheCanvas || o.txtCanvas;
         // render the element:
         if (mmyCanvas) {
@@ -395,7 +407,7 @@
             this._draw(ctx);
         }
 
-      // ctx.blendFunc(ctx.ONE, ctx.ZERO);
+       // ctx.blendFunc(ctx.SRC_ALPHA, ctx.ONE_MINUS_SRC_ALPHA);
     },
     _draw : function(ctx) {
         ctx.bufferSubData(ctx.ARRAY_BUFFER, 0, this.vertices.subarray(0, this._index * this._vertexDataCount));
@@ -445,7 +457,7 @@
             var list = o.children.slice(0);
             for (var i = 0, l = list.length; i < l; i++) {
                 ctx.save();
-                this.renderCache(ctx, list[i]);
+                this.canvasRenderer.render(ctx, list[i]);
                 ctx.restore();
             }
         } else if (o instanceof Sprite) {

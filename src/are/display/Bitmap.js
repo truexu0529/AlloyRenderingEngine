@@ -9,8 +9,10 @@ define("ARE.Bitmap:ARE.DisplayObject", {
         this._super();
         if (typeof img == "string") {
             var self = this;
+            this.visible = false;
             this.img = document.createElement("img");
             this.img.onload = function () {
+                self.visible = true;
                 self.rect = [0, 0, self.img.width, self.img.height];
                 self.width = self.img.width;
                 self.height = self.img.height;
